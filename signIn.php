@@ -10,7 +10,7 @@
 <body>
     <div class="crop">
     <div class="box-signin">
-        <form action="home.php">
+        <form action="home.php" method="post">
         <h1>Login</h1>
         <span>Username</span>
         <div class="username-input">
