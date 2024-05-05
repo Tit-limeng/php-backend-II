@@ -4,25 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signIn.css">
+    <link rel="stylesheet" href="./css/SignIn.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Sign In</title>
 </head>
 
 <body>
+    <?php
+    session_start();
+    function validationEmail()
+    {
+        if ($_POST["email"] == "") {
+            echo "Please Input Your Email...!";
+        } else if (strlen($_POST["email"]) < 10) {
+            echo "Your Email Is Not Enough...!";
+        }
+    }
+
+    function validationPassword()
+    {
+        if ($_POST["password"] == "") {
+            echo "Password is Require ...!";
+        } else if (strlen( $_POST["password"]) < 8) {
+            echo "Password at least 8 Character ";
+        }
+    }
+
+    function validationAll()
+    {
+        if ( strlen($_POST["email"]) >=10 && strlen($_POST["password"]) >=8 ) {
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["password"] = $_POST["password"];
+            header("Location:index.php");
+        }
+    }
+
+    if (isset($_POST["btnLogIn"]) ) {
+        validationAll();
+    }
+    ?>
+
     <div class="crop">
-        <div class="box-signin">
-            <form action="home.php" method="post">
-                <h1>Login</h1>
-                <span>Username</span>
+        <div class="box-signin" data-aos="zoom-in-up">
+            <form action="signIn.php" method="post">
+                <h1 data-aos="fade-up">Login</h1>
+                <span>Email</span>
                 <div class="username-input">
                     <div class="username-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
                     <div class="username-label">
-                        <input type="text" placeholder="type your username">
+                        <input name="email" autocomplete="off" class="input-email" type="text" placeholder="type your username">
                     </div>
                 </div>
+                <p class="messageEmail">
+                    <?php
+                    if (isset($_POST["btnLogIn"])) {
+                        validationEmail();
+                    }
+                    ?>
+                </p>
                 <span>Password</span>
 
                 <div class="password-input">
@@ -30,23 +72,37 @@
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="password-label">
-                        <input type="text" placeholder="type your password">
+                        <input name="password" class="input-password" type="password" placeholder="type your password">
                     </div>
+
                 </div>
+                <p class="messagePassword">
+                    <?php
+                    if (isset($_POST["btnLogIn"])) {
+                        validationPassword();
+                    }
+                    ?>
+                </p>
                 <div class="forgot">
                     <a href="forgotPassword.php">Forgot Password</a>
                 </div>
 
                 <div class="btn-login">
-                    <button>Login</button>
+                    <button name="btnLogIn" onclick="validationAll()" class="btnLogIn">Login</button>
                 </div>
                 <div class="sign-up">
                     <a href="signUp.php">Or Sign Up</a>
                 </div>
         </div>
+
         </form>
     </div>
 
 </body>
+<!-- <script src="js/Main.js"></script> -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 
 </html>

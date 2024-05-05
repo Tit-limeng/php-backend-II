@@ -54,10 +54,10 @@ class Attendance{
     }
 }
 
-$attendace = new Attendance();
+// $attendace = new Attendance();
 
-if ( $attendace->isLogIn() ) {
-    header('location:home.php');
-}
+// if ( $attendace->isLogIn() ) {
+//     header('location:home.php');
+// }
 
 ?>
