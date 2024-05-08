@@ -1,27 +1,28 @@
 <?php
 
 class Attendance{
-    public $id ;
-    public $username;
-    public $gender;
+    public $user_id;
+    public $firstName;
+    public $lastName;
     public $password;
     public $email;
+    public $dob;
+    public $date;
     public $start_date;
     public $end_date;
-    public $date;
-    public $logIn ;
-
-    private function getAttendance(){
+    public function getAttendance(){
         if ( session_id() == ""){
             session_start();
         }
-        $this -> id = $_SESSION["id"];
-        $this -> username = $_SESSION["username"];
-        $this -> gender = $_SESSION["gender"];
-        $this -> password = $_SESSION["password"];
+        $this -> user_id = $_SESSION["userid"];
+        $this-> firstName = $_SESSION["fisrtName"];
+        $this-> lastName = $_SESSION["lastName"];
         $this -> email = $_SESSION["email"];
+        $this -> password = $_SESSION["password"];
+        $this -> dob = $_SESSION["dob"];
         $this -> date = $_SESSION["date"];
-        $this -> logIn = $_SESSION["logIn"];
+        $this -> start_date = $_SESSION["start_date"];
+        $this -> end_date = $_SESSION["end_date"];
     }
 
     public function getSession(){
@@ -29,20 +30,15 @@ class Attendance{
             session_start();
         }
 
-        $_SESSION["id"] = $this -> id;
-        $_SESSION["username"] = $this -> username;
-        $_SESSION["gender"] = $this -> gender;
-        $_SESSION["password"] = $this -> password ;
+        $_SESSION["userid"] = $this -> user_id;
+        $_SESSION["firstName"] = $this -> firstName;
+        $_SESSION["lastName"] = $this -> lastName;
         $_SESSION["email"] = $this -> email ;
-        $_SESSION["date"] = $this -> date;  
-        $_SESSION["logIn"] = $this -> logIn;
-    }
-
-    function __construct(){
-    //    if ( $_SESSION["logIn"] == true && isset($_SESSION["logIn"])) {
-        $this -> getAttendance();
-        $this -> logIn = $_SESSION["logIn"];
-    //    }
+        $_SESSION["password"] = $this -> password ;
+        $_SESSION["date"] = $this -> date ;
+        $_SESSION["dob"] = $this -> dob; 
+        $_SESSION["start_date"]  = $this -> start_date;
+        $_SESSION["end_date"]  = $this -> end_date;
     }
     function isLogIn(){
         return isset($_SESSION["email"]);
@@ -54,10 +50,10 @@ class Attendance{
     }
 }
 
-// $attendace = new Attendance();
+$attendace = new Attendance();
 
-// if ( $attendace->isLogIn() ) {
-//     header('location:home.php');
-// }
+if ( $attendace->isLogIn() ) {
+    header('location:index.php');
+}
 
 ?>

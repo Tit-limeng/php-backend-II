@@ -133,7 +133,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
+    margin: 50px 0;
 }
  
 .btn-login button{
@@ -146,6 +146,13 @@ span {
     border: none;
     cursor: pointer;
 } 
+
+.btn-login button:hover{
+    color:  #EA1111;
+    background-color:#46FAE2 ;
+    transition: 200ms linear;
+}
+
 
 .sign-up{
     display: flex;

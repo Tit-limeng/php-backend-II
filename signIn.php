@@ -83,16 +83,12 @@
                     }
                     ?>
                 </p>
-                <div class="forgot">
-                    <a href="forgotPassword.php">Forgot Password</a>
-                </div>
+                
 
                 <div class="btn-login">
                     <button name="btnLogIn" onclick="validationAll()" class="btnLogIn">Login</button>
                 </div>
-                <div class="sign-up">
-                    <a href="signUp.php">Or Sign Up</a>
-                </div>
+                
         </div>
 
         </form>
