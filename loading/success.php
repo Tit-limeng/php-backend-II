@@ -27,7 +27,7 @@
     const main =document.querySelector(".main");
     setInterval(()=>{
         main.style.display = 'none';
-    },3000);
+    },2000);
     setInterval(() => {
         window.location.replace('../signIn.php');
     }, 3000);
