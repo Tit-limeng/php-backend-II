@@ -6,7 +6,7 @@ include('../connection/connectiondb.php');
 
 $updateData = 'UPDATE  user_attendance SET firstName = "'.$_POST["fname"].'",
 lastName = "'.$_POST["lname"].'",email = "'.$_POST["email"].'",password= "'.$_POST["password"].'",
- dob="'.$_POST["dob"].'" WHERE user_Id = "'.$_POST["user_Id"].'" ';
+dob="'.$_POST["dob"].'" WHERE user_Id = "'.$_POST["user_Id"].'" ';
 
 
  if ( mysqli_query($con,$updateData)) {

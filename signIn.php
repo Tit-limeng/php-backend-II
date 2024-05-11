@@ -12,42 +12,43 @@
 
 <body>
     <?php
-    session_start();
-    function validationEmail()
-    {
-        if ($_POST["email"] == "") {
-            echo "Please Input Your Email...!";
-        } else if (strlen($_POST["email"]) < 10) {
-            echo "Your Email Is Not Enough...!";
-        }
-    }
+    
+    // function validationEmail()
+    // {
+    //     if ($_POST["email"] == "") {
+    //         echo "Please Input Your Email...!";
+    //     } else if (strlen($_POST["email"]) < 10) {
+    //         echo "Your Email Is Not Enough...!";
+    //     }
+    // }
 
-    function validationPassword()
-    {
-        if ($_POST["password"] == "") {
-            echo "Password is Require ...!";
-        } else if (strlen( $_POST["password"]) < 8) {
-            echo "Password at least 8 Character ";
-        }
-    }
+    // function validationPassword()
+    // {
+    //     if ($_POST["password"] == "") {
+    //         echo "Password is Require ...!";
+    //     } else if (strlen( $_POST["password"]) < 8) {
+    //         echo "Password at least 8 Character ";
+    //     }
+    // }
 
-    function validationAll()
-    {
-        if ( strlen($_POST["email"]) >=10 && strlen($_POST["password"]) >=8 ) {
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["password"] = $_POST["password"];
-            header("Location:index.php");
-        }
-    }
+  
+    // function validationAll()
+    // {
+    //     if ( strlen($_POST["email"]) >=10 && strlen($_POST["password"]) >=8 ) {
+    //         $_SESSION["email"] = $_POST["email"];
+    //         $_SESSION["password"] = $_POST["password"];
+    //         header("Location:index.php");
+    //     }
+    // }
 
-    if (isset($_POST["btnLogIn"]) ) {
-        validationAll();
-    }
-    ?>
-
+    // if (isset($_POST["btnLogIn"]) ) {
+    //     validationAll();
+    // }
+    // ?>
+    
     <div class="crop">
         <div class="box-signin" data-aos="zoom-in-up">
-            <form action="signIn.php" method="post">
+            <form action="../oop/query/querySignIn.php" method="post">
                 <h1 data-aos="fade-up">Login</h1>
                 <span>Email</span>
                 <div class="username-input">
@@ -59,11 +60,11 @@
                     </div>
                 </div>
                 <p class="messageEmail">
-                    <?php
-                    if (isset($_POST["btnLogIn"])) {
-                        validationEmail();
-                    }
-                    ?>
+                    <!-- <?php
+                    // if (isset($_POST["btnLogIn"])) {
+                        // validationEmail();
+                    // }
+                    ?> -->
                 </p>
                 <span>Password</span>
 
@@ -77,16 +78,15 @@
 
                 </div>
                 <p class="messagePassword">
-                    <?php
-                    if (isset($_POST["btnLogIn"])) {
-                        validationPassword();
-                    }
-                    ?>
+                    <!-- <?php
+                    // if (isset($_POST["btnLogIn"])) {
+                        // validationPassword();
+                    // }
+                    ?> -->
                 </p>
                 
-
                 <div class="btn-login">
-                    <button name="btnLogIn" onclick="validationAll()" class="btnLogIn">Login</button>
+                <a href="./loading/success.php"><button name="btnLogIn" onclick="validationAll()" class="btnLogIn">Login</button></a>
                 </div>
                 
         </div>
