@@ -23,7 +23,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #0057FF;
-    display: none;
+    /* display: none; */
 }
 
 .box-signin {
@@ -41,9 +41,6 @@ body {
     font-weight: bold;
     color: #000000f3;
     font-family: sans-serif;
-}
-form {
-    margin-top: 100px;
 }
 
 .username-input {
@@ -146,15 +143,11 @@ span {
     margin-right: 80px;
 }
 
-.btn-login{
-    /* width: 200px;
-    height: 100px; */
+.btn-login {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin: 50px 0; */
-    gap: 20px;
-    /* background-color: red; */
+    margin: 50px 0;
 }
  
 .btn-login button{

@@ -8,13 +8,7 @@
     <title>Access</title>
 </head>
 <body>
-    <?php
-        include('../connection/connectiondb.php');
-        $idSuccess = $_GET["id"];
-        $selectQuery = 'SELECT * FROM user_attendance  WHERE user_Id =' . $idSuccess;
-        $selectExecute = $con->query($selectQuery);
-        $row = $selectExecute->fetch_assoc();
-    ?>
+    <!--  -->
     <div class="main">
 <l-waveform
   size="70"
@@ -26,18 +20,16 @@
 
     <div class="message">
         <h1>Thank You for Coming...!</h1>
-        <form action="../query/queryLeave.php" method="post">
-            <input type="number" name="txtid" value='
-            <?php  echo $row["user_Id"] ?>
-            '>
-            <button name="txtLeave">leave</button>
-        </form>
     </div>
 </body>
 <script>
+    const message =document.querySelector(".message");
     const main =document.querySelector(".main");
     setInterval(()=>{
         main.style.display = 'none';
     },3000);
+    setInterval(() => {
+        window.location.replace('../signIn.php');
+    }, 3000);
 </script>
 </html>
