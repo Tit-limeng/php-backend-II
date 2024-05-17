@@ -11,27 +11,49 @@
    <title>dashboard admin</title>
 </head>
 
+<style>
+   .main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: white;
+    position: absolute;
+    z-index: 99;
+   }
+
+   .tab {
+      display: none;
+   }
+</style>
 <body>
    <?php
-   include('./connection/connectiondb.php');
+   include('Attendance.php');
+   $conn = new Attendance();
+   $conn -> connection();
 
    $data = 'SELECT * FROM user_attendance ORDER BY user_id ASC';
 
-   $exe = $con->query($data);
+   $exe = mysqli_query($conn -> connection,$data);
    ?>
    <div class="main">
-      <l-cardio size="50" stroke="4" speed="2" color="black"></l-cardio>
+      <l-cardio size="80" stroke="5" speed="2" color="#00008B"></l-cardio>
    </div>
    <h1 class="text-center text-primary" data-aos="fade-up">Attendance List</h1>
    <div class="d-flex">
-      <a href="signUp.php"><button class="btn btn-secondary">Create</button></a>
+      <a href="signUp.php">
+         <button class="btn btn-secondary">Create</button>
+      </a>
    </div>
-   <table class="table table-striped w-100">
+   <table class="tab table table-striped w-100">
       <thead>
          <tr>
             <th scope="col">UserID</th>
             <th scope="col">FirstName</th>
             <th scope="col">LastName</th>
+            <th scope="col">Gender</th>
             <th scope="col">Email</th>
             <th scope="col">Password</th>
             <th scope="col">DateOfBirth</th>
@@ -41,7 +63,7 @@
             <th scope="col">Action</th>
          </tr>
       </thead>
-      <tbody data-aos="fade-up">
+      <tbody data-aos="fade-up" class="small">
          <?php
          while ($rows = $exe->fetch_assoc()) {
          ?>
@@ -59,6 +81,11 @@
                <td class="py-3">
                   <?php
                   echo $rows["lastName"]
+                  ?>
+               </td>
+               <td class="py-3">
+                  <?php
+                  echo $rows["gender"]
                   ?>
                </td>
                <td class="py-3">
@@ -115,6 +142,14 @@
    </table>
 
 </body>
+<script>
+   const main = document.querySelector(".main");
+   const tab = document.querySelector(".tab");
+   setInterval(()=>{
+      main.style.display = "none";
+      tab.style.display='block';
+   },3000);
+</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
    AOS.init();

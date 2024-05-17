@@ -13,30 +13,14 @@
 
     <?php
 
-    include('../oop/connection/connectiondb.php');
+    include('./Attendance.php');
+    $conn = new Attendance();
+    $conn->connection();
     $idEdit = $_GET["id"];
     $selectQuery = 'SELECT * FROM user_attendance  WHERE user_Id =' . $idEdit;
-    $selectExecute = $con->query($selectQuery);
+    $selectExecute = mysqli_query($conn->connection(),$selectQuery);
 
     $items = $selectExecute->fetch_assoc();
-    function signUpValidation()
-    {
-        if ($_POST["fname"] == "" && $_POST["lname"] == "" && $_POST["email"] == "" && $_POST["password"] == "") {
-            echo '<div data-aos="fade-up" class="alert alert-danger text-center container w-50" role="alert">
-                All input is required ...!
-        ​​          </div>';
-        } else if (strlen($_POST["fname"]) < 2 || strlen($_POST["lname"]) < 2  || strlen($_POST["email"]) < 10 || strlen($_POST["password"]) < 8) {
-            echo '<div data-aos="fade-up" class="alert alert-danger text-center container w-50" role="alert">
-                Your input is not enough...!
-        ​​          </div>';
-        } else if (strlen($_POST["fname"]) >= 2 && strlen($_POST["lname"]) >= 2 && strlen($_POST["email"]) >= 10 && strlen($_POST["password"]) >= 8) {
-            $_SESSION["fname"] = $_POST["fname"];
-            $_SESSION["lname"] = $_POST["lname"];
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["password"] = $_POST["password"];
-            header("Location:index.php");
-        }
-    }
     ?>
 
 
@@ -45,11 +29,6 @@
 
     <h1 data-aos="fade-up" data-aos-anchor-placement="center-center" class="text-center my-2 ">Update Data</h1>
     <form action="./query/queryUpdate.php" class="my-1" method="post">
-        <?php
-        if (isset($_POST["btncreate"])) {
-            signUpValidation();
-        }
-        ?>
         <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1100">
             <div class="row mb-3" hidden>
                 <label for="colFormLabel" class="col-sm-2 col-form-label"></label>
@@ -58,7 +37,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">First Name :</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">FirstName</label>
                 <div class="col-sm-10">
                     <input type="text" name="fname" class="form-control" id="colFormLabel" placeholder="First Name" value=<?php
                                                                                                                             echo $items["firstName"]
@@ -68,9 +47,21 @@
         </div>
         <div class=" w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1200">
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Last Name :</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">LastName</label>
                 <div class="col-sm-10">
                     <input type="text" name="lname" class="form-control" id="colFormLabel" placeholder="Last Name" value=<?php echo $items["lastName"] ?>>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1300">
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <select name="gender" class="form-select" aria-label="Default select example">
+                        <option value="Male" <?php if  ($items["gender"] == "Male") echo 'selected'?> > Male</option>
+                        <option value="Female" <?php if  ($items["gender"] == "Female") echo 'selected'?>> Female</option>
+                    </select>
                 </div>
             </div>
         </div>

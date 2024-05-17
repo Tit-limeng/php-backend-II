@@ -11,55 +11,39 @@
 
 <body>
 
-<?php
-
-
- function signUpValidation(){
-    if ( $_POST["fname"] == "" && $_POST["lname"] == "" && $_POST["email"] =="" && $_POST["password"] =="" ) {
-        echo '<div data-aos="fade-up" class="alert alert-danger text-center container w-50" role="alert">
-                All input is required ...!
-        ​​          </div>';
-    } else if ( strlen($_POST["fname"]) < 2 || strlen($_POST["lname"]) < 2  || strlen($_POST["email"]) < 10 || strlen($_POST["password"]) < 8) {
-        echo '<div data-aos="fade-up" class="alert alert-danger text-center container w-50" role="alert">
-                Your input is not enough...!
-        ​​          </div>';
-    } else if ( strlen($_POST["fname"]) >= 2 && strlen($_POST["lname"])>= 2 && strlen($_POST["email"]) >=10 && strlen($_POST["password"]) >=8 ) {
-        $_SESSION["fname"] = $_POST["fname"];
-        $_SESSION["lname"] = $_POST["lname"];
-        $_SESSION["email"] = $_POST["email"];
-        $_SESSION["password"] = $_POST["password"];
-        header("Location:index.php");
-    }
- }
-?>
-       
-    <h1 data-aos="fade-up" data-aos-anchor-placement="center-center" class="text-center my-2 ">Sign Up Account</h1>
-    <form action="./query/queryInsert.php" class="my-1" method="post">
-        <?php
-         if ( isset($_POST["btncreate"]) ) {
-            signUpValidation();
-         }
-        ?>
-        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up"  data-aos-duration="1100">
+    <h1 data-aos="fade-up" data-aos-anchor-placement="center-center" class="text-center my-2 ">Employee Info</h1>
+    <form action="./query/queryInsert.php" class="my-4" method="post">
+        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1100">
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">First Name :</label>
+            <label for="colFormLabel" class="col-sm-2 col-form-label flex">FirstName</label>
+
                 <div class="col-sm-10">
                     <input type="text" name="fname" class="form-control" id="colFormLabel" placeholder="First Name">
                 </div>
             </div>
         </div>
-        <div class=" w-50 mx-auto justify-content-center"  data-aos="fade-up" data-aos-duration="1200">
+        <div class=" w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1200">
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Last Name :</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">LastName </label>
                 <div class="col-sm-10">
                     <input type="text" name="lname" class="form-control" id="colFormLabel" placeholder="Last Name">
                 </div>
             </div>
         </div>
 
+        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1300">
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <select name="gender" class="form-select" aria-label="Default select example">
+                        <option value="Male" selected>Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-
-        <div class="w-50 mx-auto justify-content-center"  data-aos="fade-up" data-aos-duration="1300">
+        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1300">
             <div class="row mb-3">
                 <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
@@ -67,9 +51,9 @@
                 </div>
             </div>
         </div>
-        <div class="w-50 mx-auto justify-content-center"  data-aos="fade-up" data-aos-duration="1400">
+        <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1400">
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Password :</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Password </label>
                 <div class="col-sm-10">
                     <input name="password" type="password" class="form-control" id="colFormLabel" placeholder="Enter your Password">
                 </div>
@@ -78,27 +62,27 @@
 
         <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1500">
             <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">DOB :</label>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">DOB </label>
                 <div class="col-sm-10">
-                    <input type="text" name="dob" class="form-control" id="colFormLabel"  auto-complete="off">
+                    <input type="text" name="dob" class="form-control" id="colFormLabel" auto-complete="off" placeholder="Date of Birth">
                 </div>
             </div>
         </div>
         <br>
         <div class="w-[50] mx-auto  justify-content-center d-flex ">
-            <button  name="btncreate" data-aos="zoom-in-up" class="btn btn-primary">Crete Account</button>
+            <button name="btncreate" data-aos="zoom-in-up" class="btn btn-primary">Crete Account</button>
         </div>
         <br>
         <div class="d-flex container align-items-center">
-            <button class="btn btn-dark" style="margin-left: 230px; margin-top:-110px;"><a href="signIn.php">Back</a></button>
-            
+            <button class="btn btn-dark" style="margin-left: 230px;"><a href="admin.php">Back</a></button>
+
         </div>
     </form>
 
 </body>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
+    AOS.init();
 </script>
 
 </html>
