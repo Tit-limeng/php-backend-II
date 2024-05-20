@@ -7,8 +7,5 @@ $userAdd ->connection();
 $userAdd->insertEmployee();
 
 $userAdd -> connectionClose();
-
-
-
 ?>
 

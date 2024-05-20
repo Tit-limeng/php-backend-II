@@ -23,10 +23,6 @@
     $items = $selectExecute->fetch_assoc();
     ?>
 
-
-
-
-
     <h1 data-aos="fade-up" data-aos-anchor-placement="center-center" class="text-center my-2 ">Update Data</h1>
     <form action="./query/queryUpdate.php" class="my-1" method="post">
         <div class="w-50 mx-auto justify-content-center" data-aos="fade-up" data-aos-duration="1100">
