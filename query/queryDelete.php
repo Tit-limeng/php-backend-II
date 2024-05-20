@@ -3,7 +3,6 @@
 include('../Attendance.php');
 
 $conn = new  Attendance();
-$conn -> connection();
+$conn->connection();
 $conn->deleteEmployee();
-$conn -> connectionClose();
-?>
+$conn->connectionClose();

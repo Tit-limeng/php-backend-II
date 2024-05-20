@@ -2,10 +2,8 @@
 
 include('../Attendance.php');
 $userAdd = new Attendance();
-$userAdd ->connection();
+$userAdd->connection();
 
 $userAdd->insertEmployee();
 
-$userAdd -> connectionClose();
-?>
-
+$userAdd->connectionClose();
